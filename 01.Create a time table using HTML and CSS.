@@ -3,8 +3,8 @@
 <head>
 <title>2nd Sem Timetable</title>
 <style> body{
-  color: gold;
-  background-color: black;
+color: gold;
+background-color: black;
 }
 
 table{
@@ -27,7 +27,7 @@ table{
 <th style="width:10%">3:40-4:30</th>
 </tr>
 
-<tr> 
+<tr>
 <td>MON</td>
 <td colspan="3" style="text-align: center;">AWT&ADBMS LAB</td>
 <td style="text-align: center">AWT</td>
@@ -65,7 +65,6 @@ table{
 <td style="text-align: center">AWT</td>
 <td style="text-align: center">SPM</td>
 <td style="text-align: center"></td>
- 
 </tr>
 
 <tr>
