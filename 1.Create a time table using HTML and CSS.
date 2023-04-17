@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>2nd Sem Timetable</title>
+<style> body{
+  color: gold;
+  background-color: black;
+}
+
+table{
+  background-color: red;
+}
+</style>
+</head>
+
+<body>
+<table border="1P1">
+<tr>
+<th>Date/Time</th>
+<th style="width:20%">9:15-10:05</th>
+<th style="width:20%">10:10-11:00</th>
+<th style="width:20%">11:05-11:55</th>
+<th style="width:10%">12:00-12:50</th>
+<th style="width:5%">12:50-1:50</th>
+<th style="width:10%">1:50-2:40</th>
+<th style="width:10%">2:45-3:35</th>
+<th style="width:10%">3:40-4:30</th>
+</tr>
+
+<tr> 
+<td>MON</td>
+<td colspan="3" style="text-align: center;">AWT&ADBMS LAB</td>
+<td style="text-align: center">AWT</td>
+<td style="text-align: center">L</td>
+<td style="text-align: center">ADBMS</td>
+<td style="text-align: center">SPM</td>
+<td style="text-align: center">ML</td>
+</tr>
+
+<tr style="text-align: center;">
+<td>TUE</td>
+<td colspan="3">ML LAB</td>
+<td style="text-align: center">CD</td>
+<td style="text-align: center">U</td>
+<td style="text-align: center">ML</td>
+<td style="text-align: center">ADBMS</td>
+<td style="text-align: center"></td>
+</tr>
+
+<tr>
+<td>WED</td>
+<td colspan="3" style="text-align: center;">AWT&ADBMS LAB</td>
+<td style="text-align: center">SPM</td>
+<td style="text-align: center">N</td>
+<td style="text-align: center">CD</td>
+<td style="text-align: center">AWT</td>
+<td style="text-align: center">ML</td>
+</tr>
+
+<tr>
+<td>THU</td>
+<td colspan="3" style="text-align: center;">ML LAB</td>
+<td style="text-align: center">CD</td>
+<td style="text-align: center">C</td>
+<td style="text-align: center">AWT</td>
+<td style="text-align: center">SPM</td>
+<td style="text-align: center"></td>
+ 
+</tr>
+
+<tr>
+<td>FRI</td>
+<td style="text-align: center;">ADBMS</td>
+<td style="text-align: center;">ML</td>
+<td style="text-align: center;">AWT</td>
+<td style="text-align: center">SPM</td>
+<td style="text-align: center">H</td>
+<td style="text-align: center">ADBMS</td>
+<td style="text-align: center">CD</td>
+<td style="text-align: center"></td>
+</tr>
+</table>
+</body>
+</html>
