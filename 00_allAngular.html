@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <title>My AngularJS App</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body>
+
+  <h1>Welcome to my app!</h1>
+
+  <my-form></my-form>
+
+  <my-directive></my-directive>
+
+  <script>
+    angular.module('myApp', [])
+
+      .controller('MainController', function() {
+        this.name = '';
+
+        this.submit = function() {
+          alert('Hello, ' + this.name + '!');
+        };
+      })
+
+      .component('myForm', {
+        template: `
+          <form ng-submit="$ctrl.submit()">
+            <label for="name">Enter your name:</label>
+            <input type="text" id="name" ng-model="$ctrl.name" required>
+            <button type="submit">Submit</button>
+          </form>
+        `,
+        controller: 'MainController'
+      })
+
+      .directive('myDirective', function() {
+        return {
+          template: '<h2>This is my directive!</h2>'
+        };
+      });
+  </script>
+
+</body>
+</html>
