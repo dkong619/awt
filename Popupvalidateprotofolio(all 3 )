@@ -1,0 +1,181 @@
+Popup
+<!DOCTYPE html>
+<html>
+<head>
+<title>Pop UP Box</title>
+<script>
+function dte() {
+const date = new Date();
+document.getElementById('datee').setAttribute("value", date);
+}
+function Factorials() {
+const number = parseInt(prompt('Enter a positive integer: '));
+if (number < 0) {
+console.log('Error! Factorial for negative number does not exist.');
+27
+}
+else if (number === 0) {
+console.log(`The factorial of ${number} is 1.`);
+}
+else {
+let fact = 1;
+for (i = 1; i <= number; i++) {
+fact *= i;
+alert("Factorial of "+number+" is "+fact);
+}
+}
+function MulTable() {
+const number = parseInt(prompt('Enter a positive integer: '));
+const numbers=[];
+let j=0;
+for (i = 1; i <= 10; i++ ) {
+numbers[j] = i*number;
+j++;
+}
+alert("Table of "+number+" is "+numbers);
+}
+function Addition() {
+const a = parseInt(prompt('Enter first Number '));
+const b = parseInt(prompt('Enter second Number '));
+if(confirm("Are You Want Add two Numbers"))
+28
+alert("Addition of "+a+" and "+b+" is "+(a+b));
+else
+alert("okk, we wont Add it");
+}
+</script>
+</head>
+<body style="text-align:center;">
+Date <input type="text" id="datee"><br><br>
+<button onclick="dte()">Show Date</button><br><br>
+<button onclick="Factorials()">Factorial</button><br><br>
+<button onclick="MulTable()">Multiplication Table</button><br><br>
+<button onclick="Addition()">Addition</button>
+</body>
+</html>
+Validate form
+<!DOCTYPE html>
+<html>
+<head>
+<title>Registration Form</title>
+<script>
+function validateForm() {
+let a = document.getElementById("fname").value;
+if (a.length<6 || /^[a-zA-Z]/.test(a)==false) {
+alert("Name must be filled out at least 6 characters");
+return false;
+}
+let g = document.getElementById("pass").value;
+if (g.length<6) {
+alert("Password should not be less than 6 characters length");
+return false;
+}
+24
+let d = document.getElementById("mail").value;
+if (/^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{2,3})+$/.test(d)==false) {
+alert("Enter Valid Email");
+return false;
+}
+let e = document.getElementById("number").value;
+if (e.length!=10) {
+alert("Phone number should contain 10 digits only");
+return false;
+}
+let f = document.getElementById("add").value;
+let b = document.getElementById("lname").value;
+if (f=="" || b=="") {
+alert("address And Last Name must be filled out");
+return false;
+}
+}
+</script>
+</head>
+<body style="background-color:skyblue ;">
+<form method=POST action="" onsubmit="return validateForm()">
+<h1 style="color:red;text-align:center;margin-top:70px;">Registration
+Form</h1><br>
+<pre>
+<div style="margin-left:40%; margin-top:5%; width:315px; backgroundcolor:yellow;padding-left:25px; padding-bottom:25px;
+font-size:15px;">
+25
+First Name <input id='fname' type='text' name='fname'><br>
+Last Name <input id='lname' type='text' name='lname'><br>
+DOB <input id='dob' type='date' name='DOB'><br>
+Email <input id='mail' type='email' name='email'><br>
+Mobile No. <input id='number' type='text' name='mno'><br>
+Address <br> <textarea id='add' name='address'></textarea><br>
+Gender <input id='gen' type='radio' name='Gen' value='Male'>Male <input
+id='gen2' type='radio' name='Gen' value='Female'>Female<br>
+Password <input id='pass' type='password' name='pass'><br>
+<input type='submit' value='Submit'> <input type='reset' value='Clear'>
+</div>
+</pre>
+</form>
+</body>
+</html>
+Portfolio
+<!DOCTYPE html>
+<html>
+<head>
+<title>Simple Navbar</title>
+<style>
+nav {
+background-color: #2c3333;
+overflow: hidden;
+}
+nav a {
+float: left;
+color: white;
+text-align: center;
+padding: 14px 16px;
+text-decoration: none;
+font-size: 17px;
+}
+nav a:hover {
+background-color: #ddd;
+color: black;
+}
+.active {
+background-color: #1a5f7a;
+color: white;
+}
+.banner {
+30 | P a g e
+background-image: url("bg1.webp");
+background-size: cover;
+height: 760px;
+display: flex;
+align-items: center;
+justify-content: center;
+color: white;
+font-size: 50px;
+text-shadow: 2px 2px #000;
+text-align: center;
+}
+h2{
+color: #1a5f7a;
+}
+</style>
+</head>
+<body>
+<nav>
+<a class="active" href="#">Home</a>
+<a href="#">About</a>
+<a href="#">Contact</a>
+</nav>
+<div class="banner">
+<div style="position: absolute;
+top: 50%;
+left:50%;
+transform: translate(-50%,-50%);">
+<h2>Welcome to my Portfolio Page</h2>
+<p style="font-size: 20px">
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente
+31 | P a g e
+optio est ducimus, delectus, pariatur libero, voluptas nostrum
+dignissimos excepturi magnam quis reprehenderit. Omnis cupiditate in
+deleniti reprehenderit. Maxime, eaque repellat!
+</p>
+</div>
+</div>
+</body> </html>
