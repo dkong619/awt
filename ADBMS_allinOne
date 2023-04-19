@@ -1,0 +1,234 @@
+
+/*		 #1: Creating Databases/Table Spaces/Constraints/Keys
+ 	*/
+
+
+A.Create a database using DDL command for any real-world entity(with all type of constraints – null, not null, primary key, foreign key, check)
+
+create database Record; use Record;
+create table Depart(DeptNo int(2) primary key, DName varchar(14), DLoc varchar(14));
+create table Employ(EmpNo int(4) primary key , EName varchar(10) not null, JOB varchar(20),age int(5), MGR int(4), HireDate date, Salary int(7), COMM int(7), DeptNo int(2),CHECK (age>=18),FOREIGN KEY(DeptNo) REFERENCES Depart(DeptNo));
+
+
+****************************** OUTPUT ******************************
+
+
+
+ 
+B.Implement DML commands for the created above database on all tables
+•	INSERT
+
+insert into Depart values(1, "CS", "Banglore");
+insert into Employ values(01, "Shreyash", "Front-end Dev",19, 444, '2023-04-04', 50000, 100000,1);
+insert into Employ values(02, "Ranjan", "Back-end Dev",20, 454, '2023- 04-05', 55000, 150000, 1);
+•	UPDATE
+UPDATE Employ SET EName = 'Alfred' WHERE EmpNo = 01;
+•	DELETE
+delete from Employ where EName='Alfred’;
+
+
+****************************** OUTPUT ******************************
+
+
+
+
+
+C . Implement DCL commands for the above database in all the tables
+•	GRANT
+CREATE USER shreya@localhost IDENTIFIED BY 'Shree12'; GRANT ALL ON record.* TO shreya@localhost;
+•	REWOKE
+REVOKE ALL, GRANT OPTION FROM shreyash@localhost;
+
+
+
+ 
+
+
+
+/*		 #2: Creating Objects
+ 	*/
+
+CREATE VIEW
+create view EmployeJob as select EmpNo, JOB from Employ where DeptNo =1;
+
+select * from EmployeJob;
+
+create view EmployeAge as select EmpNo, EName from Employ where age =20;
+
+select * from EmployeAge;
+
+create view EmployeHireDate as select EmpNo, EName from Employ where HireDate = '2023-04-05';
+
+select * from EmployeHireDate;
+
+
+****************************** OUTPUT ******************************
+ 
+
+
+
+
+
+
+
+/*		 #3: Moving Data
+ 	*/
+
+A.Demonstrate how database can be exported from mySQL
+CD C:\Program Files (x86)\MySQL\MySQL Server 6.0\bin mysqldump -u root -p Record > S:\BackupFile\Record.sql
+****************************** OUTPUT ******************************
+
+
+B.Demonstrate how to import the table form other application to mySQL CREATE DATABASE mytestdb_copy;
+USE mytestdb_copy;
+
+SHOW TABLES;
+ 
+****************************** OUTPUT ******************************
+CD C:\Program Files (x86)\MySQL\MySQL Server 6.0\bin mysql -u root -p mytestdb_copy < S:\BackupFile\Record.sql
+****************************** OUTPUT ******************************
+
+
+
+
+/*		 #4: Recovery
+ 	*/
+Implement the command for backward recovery(Savepoint, Commit, Rollback)
+
+
+C.SAVEPOINT
+
+insert into Employ values(01, "Shreyash", "Front-end Dev", 444, '2023- 04-04', 50000, 100000, “Bengaluru");
+
+
+insert into Employ values(02, "Ranjan", "Back-end Dev", 454, '2023-04- 05', 55000, 150000, “Mumbai");
+
+
+SAVEPOINT SP1;
+
+
+D.ROLLBACK
+ 
+select * from Employ;
+
+
+insert into Employ values(03, "Vicky", "Front-end Dev", 444, '2023-04- 04', 50000, 100000, “Bengaluru");
+
+
+insert into Employ values(04, "Tejas", "Back-end Dev", 454, '2023-04- 05', 55000, 150000, “Mumbai");
+
+
+rollback to SP1;
+
+
+select * from Employ;
+
+
+E.COMMIT
+
+insert into Employ values(03, "Vicky", "Front-end Dev", 444, '2023-04- 04', 50000, 100000, “Bengaluru");
+
+
+COMMIT;
+
+
+
+*************************** OUTPUT ****************************
+ 
+
+
+/*		 #5: Locking
+ 	*/
+A.Implement the lock command to show 2 transactions
+
+
+LOCK TABLES employ READ;
+select * from employ;
+ 	select EmpNo from employ group by DeptNo;
+**************************** OUTPUT ***************************
+ 
+
+
+B.Demonstrate acquiring locks and releasing locks by using a proper transaction flow
+
+FLUSH TABLES WITH READ LOCK; START TRANSACTION;
+SELECT Salary from Employ where EmpNo=2 ; UNLOCK TABLES;
+**************************** OUTPUT ***************************
+/*		 #6: Preparing Application for execution using a front end tool.
+ 	*/
+Design form in HTML, Create table in mySQL and use PHP to connect the content of the form to the mySQL database
+
+
+HTML FILE :
+
+
+<html>
+<head>
+<title>Registration Form</title>
+</head>
+<body style="background-color:skyblue ;">
+<form method=POST action="">
+<h1 style="color:red;text-align:center;margin-top:70px;">Registration Form</h1><br>
+<div style="margin-left:40%; margin-top:5%; width:315px; background- color:yellow;padding-left:25px; padding-bottom:25px; font-size:15px;">
+First Name <input type='text' name='fname'><br> Last Name	<input type='text' name='lname'><br> Email	<input type='email' name='email'><br> Mobile No. <input type='text' name='mno'><br>
+Address <br>	<textarea name='address'></textarea><br> Password	<input type='password' name='pass'><br>
+<input type='submit' value='Submit'>	<input type='reset' value='Clear'>
+</div>
+</form>
+</body>
+</html>
+
+
+MYSQL TABLE:
+create table registration(firstName varchar(20),lastName varchar(20),email varchar(50),password varchar(12),number varchar(20));
+
+
+PHP FILE(connect.php)
+
+ 
+<?php
+ 
+$firstName=$_POST['fname'];
+$lastName=$_POST['lname'];
+$email=$_POST['email'];
+$password=$_POST['pass'];
+$number=$_POST['mno'];
+ 
+$conn = new mysqli('localhost','root','','Record');
+
+if($conn->connect_error){
+die('Connection Failed : '. $conn->connect_errorr);
+}else{
+
+$stmt = $conn->prepare("insert into registration(firstName, lastName, email, password, number) values(?,?,?,?,?)");
+
+$stmt->bind_param("sssss",$firstName, $lastName, $email,
+$password, $number);
+
+$stmt->execute();
+
+echo "Registration successfully…!!!!!";
+
+$stmt->close();
+
+$conn->close();
+
+}
+
+?>
+
+
+**************************** OUTPUT *************************** HTML FILE:
+ 
+
+
+
+CONNECT.PHP:
+
+
+
+
+DATABASE:
+
+
+
